@@ -1,0 +1,16 @@
+{
+  "name": "quest",
+  "scripts": {
+    "dev": "bun run --hot app.ts",
+    "start": "bun run app.ts"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "hono": "^4.5.11",
+    "marked": "^14.1.2",
+    "mongoose": "^8.6.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
