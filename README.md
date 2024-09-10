@@ -29,14 +29,9 @@ bun install
 ## 运行（开发环境）
 
 ```sh
+# dev
 bun run dev
-```
-
-> 访问地址：http://localhost:8848
-
-## 运行（生产环境）
-
-```sh
+# start
 bun run start
 ```
 
