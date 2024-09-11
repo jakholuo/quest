@@ -11,7 +11,7 @@ const Index = (props: IIndexProps) => {
   const fetchPrevList = () => html`
     <script>
       var memoList = document.getElementById('memo-list');
-      var lastMemoId = memoList.lastElementChild.id;
+      var lastMemoId = memoList.lastElementChild ? memoList.lastElementChild.id : '' ;
       var fetchButton = document.createElement('div');
       var currentTags = document.getElementById('current-tags');
       var currentTagsWrap = document.getElementById('current-tags-wrap');
