@@ -29,7 +29,7 @@ const Layout = (props: SiteData) => {
           )
         }
         {
-          Bun.env.TFONT_SCRIPT_URL && (
+          Bun.env.FONT_SCRIPT_URL && (
             <link href={Bun.env.TFONT_SCRIPT_URL} rel='stylesheet' />
           )
         }
