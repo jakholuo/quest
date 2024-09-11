@@ -31,8 +31,12 @@ bun install
 ```sh
 # dev
 bun run dev
+
 # start
 bun run start
+
+# nohup 守护运行
+nohup bun run start > output.log 2>&1 &
 ```
 
 > 访问地址：http://localhost:8848
@@ -45,33 +49,37 @@ bun run start
 
 > [POST] /api/users/token
 
-参数：
-- name: 用户名
-- password: 密码
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| name | string | 是   | 用户名     |
+| password | string | 是   | 密码       |
 
 2. 创建 Memo
 
 > *[POST] /api/memo/create
 
-参数：
-- content: 内容
-- tags: 标签数组
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| content | string | 是   | 内容     |
+| tags | array | 是   | 标签       |
 
 3. 获取 Memo 列表
 
 > [POST] /api/memo/list
 
-参数：
-- size: 每页数量
-- prev: 上一个 memo 的 id，用于分页加载
-- tags: 标签数组
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| size | number | 是   | 每页数量     |
+| prev | string | 否   | 上一个 memo 的 id，用于分页加载       |
+| tags | array | 是   | 标签       |
 
 4. 删除 Memo
 
 > *[POST] /api/memo/delete
 
-参数：
-- id: 要删除的 memo 的 id
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| id | string | 是   | 要删除的 memo 的 id     |
 
 ## 待办事项
 
