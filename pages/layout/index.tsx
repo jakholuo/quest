@@ -30,7 +30,7 @@ const Layout = (props: SiteData) => {
         }
         {
           Bun.env.FONT_SCRIPT_URL && (
-            <link href={Bun.env.TFONT_SCRIPT_URL} rel='stylesheet' />
+            <link href={Bun.env.FONT_SCRIPT_URL} rel='stylesheet' />
           )
         }
       </head>

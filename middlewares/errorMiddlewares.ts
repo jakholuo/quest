@@ -7,7 +7,7 @@ export const errorHandler = (c: Context) => {
   return c.json({
     success: false,
     message: c.error?.message,
-    stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
+    // stack: process.env.NODE_ENV === 'production' ? null : c.error?.stack,
   })
 }
 
