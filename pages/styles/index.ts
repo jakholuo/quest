@@ -6,7 +6,7 @@ export const bodyStyle = css`
     min-width: 200px;
     max-width: 980px;
     margin: 0 auto;
-    font-family: monospace;
+    font-family: "Roboto Mono";
   }
 
   @media (max-width: 980px) {
