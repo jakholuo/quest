@@ -3,7 +3,7 @@ import { Context } from 'hono'
 // Error Handler
 export const errorHandler = (c: Context) => {
   console.log(c.res.status)
-
+  c.status(500)
   return c.json({
     success: false,
     message: c.error?.message,
@@ -13,6 +13,7 @@ export const errorHandler = (c: Context) => {
 
 // Not Found Handler
 export const notFound = (c: Context) => {
+  c.status(404)
   return c.json({
     success: false,
     message: `Not Found - [${c.req.method}] ${c.req.url}`,
