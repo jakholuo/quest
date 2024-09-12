@@ -12,7 +12,7 @@ export const createMome = async (c: Context) => {
   }
 
   const memo = await Memo.create({
-    content: marked.parse(content),
+    content,
     tags,
   })
 
@@ -49,7 +49,7 @@ export const findMomeById = async (c: Context) => {
     success: true,
     data: {
       _id: memo._id,
-      content: memo.content,
+      content: marked.parse(memo.content),
       createdAt: memo.createdAt
     }
   })
@@ -86,6 +86,7 @@ export const findMomes = async (c: Context) => {
     success: true,
     data: memos.map((item) => ({
       ...item.toObject(),
+      content: marked.parse(item.content),
       tags: item.tags.map((tag: string) => (`<span class='tag-item'>#${tag}</span>`)),
       time: dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
     }))
