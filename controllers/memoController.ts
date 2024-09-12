@@ -3,6 +3,16 @@ import dayjs from 'dayjs'
 import { marked } from 'marked'
 import { Memo } from '../models'
 
+const renderer = new marked.Renderer();
+renderer.link = function(href: string, title: string, text: string) {
+  var link = marked.Renderer.prototype.link.apply(this, arguments)
+  return link.replace("<a","<a target='_blank'")
+}
+
+marked.setOptions({
+  renderer: renderer
+})
+
 export const createMome = async (c: Context) => {
   const { content, tags } = await c.req.json()
 
