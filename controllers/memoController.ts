@@ -103,6 +103,30 @@ export const findTags = async (c: Context) => {
   });
 }
 
+export const updateMemo = async (c: Context) => {
+  const { id, content, tags } = await c.req.json()
+
+  if (!id || !content || !tags) {
+    c.status(400)
+    throw new Error('Invalid memo data')
+  }
+
+  const memo = await Memo.findByIdAndUpdate(id, { content, tags })
+
+  if (!memo) {
+    c.status(400)
+    throw new Error('Invalid memo id')
+  }
+
+  return c.json({
+    success: true,
+    data: {
+      _id: memo._id,
+    },
+    message: 'Update successfully'
+  })
+}
+
 export const deleteMemo = async (c: Context) => {
   const { id } = await c.req.json()
 
