@@ -58,16 +58,8 @@ nohup bun run start > output.log 2>&1 &
 | name | string | 是   | 用户名     |
 | password | string | 是   | 密码       |
 
-2. 创建 Memo
 
-> *[POST] /api/memo/create
-
-| 参数名   | 类型   | 必填 | 描述       |
-|----------|--------|------|------------|
-| content | string | 是   | 内容     |
-| tags | array | 是   | 标签       |
-
-3. 获取 Memo 列表
+2. 获取 Memo 列表
 
 > [POST] /api/memo/list
 
@@ -77,7 +69,27 @@ nohup bun run start > output.log 2>&1 &
 | prev | string | 否   | 上一个 memo 的 id，用于分页加载       |
 | tags | array | 是   | 标签       |
 
-4. 删除 Memo
+3. 创建 Memo
+
+> *[POST] /api/memo/create
+
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| content | string | 是   | 内容     |
+| tags | array | 是   | 标签       |
+
+4. 修改 Memo
+
+> *[POST] /api/memo/update
+
+| 参数名   | 类型   | 必填 | 描述       |
+|----------|--------|------|------------|
+| id | string | 是   | 要修改的 memo 的 id     |
+| content | string | 是   | 内容     |
+| tags | array | 是   | 标签       |
+
+
+5. 删除 Memo
 
 > *[POST] /api/memo/delete
 
