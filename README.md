@@ -26,8 +26,8 @@ bun install
 
 ## 复制并修改配置文件
 
-1. 复制 `.env.example` 为 `.env`
-2. 提前在 MongoDB 中创建好对应的数据库
+1. 提前在 MongoDB 中创建好对应的数据库
+2. 复制 `.env.example` 为 `.env`
 3. 修改 `.env` 中的环境变量（ MongoDB 链接地址、端口、用户名、密码、JWT 密钥、网站名称、描述、关键词等 ）
 
 ## 运行（开发环境）
