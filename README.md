@@ -40,7 +40,7 @@ bun run dev
 bun run start
 
 # nohup 守护运行
-nohup bun run start > output.log 2>&1 &
+nohup bun run start > output.log 2>&1 & # 退出终端后守护运行，请使用 exit 退出
 ```
 
 > 访问地址：http://localhost:8848
