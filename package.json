@@ -5,6 +5,7 @@
     "start": "bun run app.ts"
   },
   "dependencies": {
+    "@heyputer/kv.js": "^0.1.8",
     "dayjs": "^1.11.13",
     "hono": "^4.5.11",
     "marked": "^14.1.2",

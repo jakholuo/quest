@@ -99,4 +99,4 @@ nohup bun run start > output.log 2>&1 & # 退出终端后守护运行，请使�
 ## 待办事项
 
 - [ ] 支持 Android / IOS 客户端发布管理内容
-- [ ] 内容缓存机制
+- [x] 内容缓存机制

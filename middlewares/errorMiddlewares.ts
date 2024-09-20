@@ -2,7 +2,6 @@ import { Context } from 'hono'
 
 // Error Handler
 export const errorHandler = (c: Context) => {
-  console.log(c.res.status)
   c.status(500)
   return c.json({
     success: false,

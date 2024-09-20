@@ -62,7 +62,10 @@ export const findMomes = async (c: Context) => {
     throw new Error('Invalid size num')
   }
 
+  const kvjs = c.get('kvjs')
+  let keyName = `list_size${size}_`
   let query: any = {}
+  let memos: any[] = []
 
   if (prev) {
     const prevMemo = await Memo.findById(prev)
@@ -70,26 +73,33 @@ export const findMomes = async (c: Context) => {
       c.status(400)
       throw new Error('Invalid prev mome id')
     }
+    keyName += `${prev}_`
     query.createdAt = { $lt: prevMemo.createdAt }
   }
 
   if (tags && tags.length > 0) {
+    keyName += JSON.stringify(tags)
     query.tags = { $in: tags }
   }
 
-  const memos = await Memo.find(query)
+  const cacheContent = kvjs.get(keyName)
+  if (!cacheContent) {
+    memos = await Memo.find(query)
     .sort({ createdAt: -1 })
     .limit(size)
     .select('_id content createdAt tags')
-
-  return c.json({
-    success: true,
-    data: memos.map((item) => ({
+    memos = memos.map(item => ({
       ...item.toObject(),
       content: marked.parse(item.content),
       tags: item.tags.map((tag: string) => (`<span class='tag-item'>#${tag}</span>`)),
       time: dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
     }))
+    kvjs.set(keyName, JSON.stringify(memos), Number(Bun.env.CACHE_SECONDS))
+  } else memos = JSON.parse(cacheContent)
+
+  return c.json({
+    success: true,
+    data: memos
   })
 
 }
