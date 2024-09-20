@@ -16,6 +16,11 @@ export const createMome = async (c: Context) => {
     tags,
   })
 
+  const kvjs = c.get('kvjs')
+  const listArr = kvjs.keys('list_*')
+  const delCache = kvjs.del(...[...listArr, 'index'])
+  // console.log('缓存删除数量', delCache)
+
   if (!memo) {
     c.status(400)
     throw new Error('Invalid memo data')
@@ -95,7 +100,10 @@ export const findMomes = async (c: Context) => {
       time: dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
     }))
     kvjs.set(keyName, JSON.stringify(memos), Number(Bun.env.CACHE_SECONDS))
-  } else memos = JSON.parse(cacheContent)
+  } else {
+    console.log('走缓存')
+    memos = JSON.parse(cacheContent)
+  }
 
   return c.json({
     success: true,
@@ -128,6 +136,9 @@ export const updateMemo = async (c: Context) => {
     throw new Error('Invalid memo id')
   }
 
+  const kvjs = c.get('kvjs')
+  kvjs.del(`memo_${id}`)
+
   return c.json({
     success: true,
     data: {
@@ -151,6 +162,9 @@ export const deleteMemo = async (c: Context) => {
     c.status(404)
     throw new Error('Invalid memo id')
   }
+
+  const kvjs = c.get('kvjs')
+  kvjs.del(`memo_${id}`)
 
   return c.json({
     success: true,
