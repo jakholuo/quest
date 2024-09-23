@@ -28,7 +28,26 @@ bun install
 
 1. 提前在 MongoDB 中创建好对应的数据库
 2. 复制 `.env.example` 为 `.env`
-3. 修改 `.env` 中的环境变量（ MongoDB 链接地址、端口、用户名、密码、JWT 密钥、内容缓存时间、网站名称、描述、关键词等 ）
+3. 修改 `.env` 中的环境变量
+
+```
+# .env
+PORT="8848" # 运行端口
+MONGO_URI="mongodb://127.0.0.1:27017/quest" # mongoDB 连接地址
+JWT_SECRET="your-secret-key" # JWT 密钥，请务必修改
+TOKEN_EXPIRE_TIME="0" # API Token 生成有效期
+ADMIN_USERNAME="admin" # 获取 Token 用户名
+ADMIN_PASSWORD="admin" # 获取 Token 密码
+TITLE="Quest" # 标题
+SUB_TITLE="A Simple Memo Site" # 副标题标题
+DESCRIPTION="Quest your interesting" # 描述
+KEYWORDS="Quest, Memo, Simple" # SEO 关键词
+INDEX_PAGE_SIZE="10" # 每页展示 Memos 数量
+CACHE_SECONDS="3600" # 访问内容服务端缓存
+FONT_SCRIPT_URL="https://fonts.googleapis.com/css?family=Mono" # Google 字体地址
+UMAMI_URL="https://cloud.umami.is/script.js" # Umami 统计托管地址（留空则不使用）
+UMAMI_WEBSITE_ID="" # Umami 统计ID（留空则不使用）
+```
 
 ## 运行（开发环境）
 
