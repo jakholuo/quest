@@ -64,6 +64,20 @@ nohup bun run start > output.log 2>&1 & # 退出终端后守护运行，请使�
 
 > 访问地址：http://localhost:8848
 
+## Docker 构建 & 部署
+
+```sh
+# 克隆项目到本地
+git clone https://github.com/jakholuo/quest.git
+# 修改 .env 文件中的站点基础信息和数据库链接地址等
+# 如本地无 MongoDB 数据库的建议可以注册使用免费的 MongoDB 云数据库
+# 构建 docker 镜像
+docker build -t quest .
+# 运行
+docker run -p 8848:8848 -d quest
+# 通过 http://localhost:8848 访问
+```
+
 ## API
 
 星号标注接口需要鉴权，采用`JWT`形式鉴权，即需要在请求`header`中添加`Authorization`的值为`Bearer ${token}`。
